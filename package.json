@@ -11,7 +11,7 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "build-webpack": "webpack --config webpack.config.js",
-    "start": "webpack serve --open" 
+    "start": "webpack serve --open"
   },
   "repository": {
     "type": "git",
