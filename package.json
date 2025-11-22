@@ -12,7 +12,7 @@
     "lint:fix": "eslint ./src --fix",
     "build:dev": "webpack --config webpack.config.js",
     "build": "webpack --config webpack.config.js --config-node-env production",
-    "start": "webpack serve --open" 
+    "start": "webpack serve --open"
   },
   "repository": {
     "type": "git",
