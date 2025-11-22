@@ -7,6 +7,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PREFIX = "/Dashboard-Otus/";
 
+const isLocalRun = process.env.NODE_ENV === "production";
+
 export default {
   mode: "development",
 
@@ -15,7 +17,7 @@ export default {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
-    publicPath: process.env.NODE_ENV === "production" ? PREFIX : "/",
+    publicPath: isLocalRun ? PREFIX : "/",
   },
 
   module: {
@@ -34,7 +36,7 @@ export default {
       filename: "404.html",
     }),
     new webpack.DefinePlugin({
-      PRODUCTION: JSON.stringify(process.env.NODE_ENV === "production"),
+      PRODUCTION: JSON.stringify(isLocalRun),
       PREFIX: JSON.stringify(PREFIX),
     }),
   ],
