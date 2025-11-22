@@ -18,11 +18,8 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - name: Deploy built files
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          cp -r dist/* .
-          git add index.html 404.html *.js -f
-          git diff --staged --quiet || git commit -m "Build: update dist files"
-          git push
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
