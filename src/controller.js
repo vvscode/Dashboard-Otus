@@ -86,20 +86,23 @@ function renderAbout() {
 }
 
 function bindNavigationHandlers() {
-  document.querySelectorAll("nav a").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const href = link.getAttribute("href");
+  document.body.addEventListener("click", (e) => {
+    if (!e.target.matches("a")) {
+      return;
+    }
+    e.preventDefault();
+    const href = e.target.getAttribute("href");
 
-      if (href === "/about" && currentUser) {
-        renderAbout();
-      } else if (href === "/dashBoard" && currentUser) {
-        renderDashboard(firebaseModelInstance);
-      } else if (href === "/" && !currentUser) {
-        authPageRender();
-        bindAuthHandlers(firebaseModelInstance);
-      }
-    });
+    if (href === PREFIX + "about" && currentUser) {
+      renderAbout();
+    } else if (href === PREFIX + "dashBoard" && currentUser) {
+      renderDashboard(firebaseModelInstance);
+    } else if (href === PREFIX + "" && !currentUser) {
+      authPageRender();
+      bindAuthHandlers(firebaseModelInstance);
+    } else {
+      alert("Fix me in routing handler");
+    }
   });
 }
 
@@ -110,6 +113,7 @@ export function runApp(firebaseModel = new FirebaseModel()) {
       filesState = await firebaseModel.listFilesWithMetadata(
         `files/${currentUser.uid}`,
       );
+      dashBoardPageRender(filesState);
     } catch (error) {
       console.error("Load files failed", error);
       filesState = [];

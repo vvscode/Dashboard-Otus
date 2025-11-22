@@ -25,4 +25,8 @@ export default {
   moduleNameMapper: {
     "\\.css$": "identity-obj-proxy",
   },
+
+  globals: {
+    PREFIX: ''
+  },
 };

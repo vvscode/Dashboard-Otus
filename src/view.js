@@ -7,7 +7,7 @@
 export function createNuvAuth() {
   const nav = document.createElement("nav");
   nav.style.cssText = "display:flex;justify-content:space-around";
-  [{ href: "/", text: "auth" }].forEach(({ href, text }) => {
+  [{ href: PREFIX + "", text: "auth" }].forEach(({ href, text }) => {
     const link = document.createElement("a");
     link.href = href;
     link.textContent = text;
@@ -21,8 +21,8 @@ export function createNuvDashboard() {
   const nav = document.createElement("nav");
   nav.style.cssText = "display:flex;justify-content:space-around";
   [
-    { href: "/dashBoard", text: "dashBoard" },
-    { href: "/about", text: "about" },
+    { href: PREFIX + "dashBoard", text: "dashBoard" },
+    { href: PREFIX + "about", text: "about" },
   ].forEach(({ href, text }) => {
     const link = document.createElement("a");
     link.href = href;
