@@ -91,13 +91,15 @@ function bindNavigationHandlers() {
       e.preventDefault();
       const href = link.getAttribute("href");
 
-      if (href === "/about" && currentUser) {
+      if (href === process.env.PREFIX + "/about" && currentUser) {
         renderAbout();
-      } else if (href === "/dashBoard" && currentUser) {
+      } else if (href === process.env.PREFIX + "/dashBoard" && currentUser) {
         renderDashboard(firebaseModelInstance);
-      } else if (href === "/" && !currentUser) {
+      } else if (href === process.env.PREFIX + "/" && !currentUser) {
         authPageRender();
         bindAuthHandlers(firebaseModelInstance);
+      } else {
+        alert("Fix me in routing handler");
       }
     });
   });

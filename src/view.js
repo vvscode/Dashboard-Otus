@@ -7,12 +7,14 @@
 export function createNuvAuth() {
   const nav = document.createElement("nav");
   nav.style.cssText = "display:flex;justify-content:space-around";
-  [{ href: "/", text: "auth" }].forEach(({ href, text }) => {
-    const link = document.createElement("a");
-    link.href = href;
-    link.textContent = text;
-    nav.appendChild(link);
-  });
+  [{ href: process.env.PREFIX + "/", text: "auth" }].forEach(
+    ({ href, text }) => {
+      const link = document.createElement("a");
+      link.href = href;
+      link.textContent = text;
+      nav.appendChild(link);
+    },
+  );
 
   return nav;
 }
