@@ -18,6 +18,15 @@ export default {
     publicPath: process.env.NODE_ENV === "production" ? PREFIX : "/",
   },
 
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+
   plugins: [
     new HtmlWebpackPlugin({ template: "./src/dashBoard.html" }),
     new HtmlWebpackPlugin({
